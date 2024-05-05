@@ -1,59 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=1920"/>
-    <meta name="description"
-          content="Site by Gabrimx7" />
-
-    <title>Site by Gabrimx7</title>
-
-    <script type='text/javascript' src='$WEBAPIS/webapis/webapis.js'></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso em Vídeo</title>
+    <link rel="stylesheet" href="estilos/style.css">
 </head>
-
 <body>
-
-    <h1>Tizen Download API</h1>
-
-    <div class="left">
-        <h2>Available buttons/actions:</h2>
-
-        <div>
-            1 - Downloaded file lists<br>
-            2 - Start download - small file<br>
-            3 - Start download - large file<br>
-            Pause - Pause download<br>
-            Play - Resume download<br>
-            Stop - Cancel download<br>
-            0 - Clear logs
-        </div>
-
-        <div id="progress" class="progress">
-            <div id="bar" class="bar"></div>
-        </div>
-
-        <fieldset>
-            <legend>Downloaded files:</legend>
-            <div id="fileList" class="logs"></div>
-        </fieldset>
-
-        <fieldset>
-            <legend>Logs</legend>
-            <div id="logs" class="logs"></div>
-        </fieldset>
-    </div>
-    <div class="right">
-        <h2>Info</h2>
-
-        <p>This application demonstrates the usage of Tizen download API</p>
-
-        <p>The application downloads files from <code>http://techslides.com</code> and <code>http://download.blender.org</code>. If these domains are not accessible it will not work.<br>
-
-            You can change the source location of files to download by changing the contents of <code>url1</code> and <code>url2</code> variables in <code>main.js</code> file</cide></p>
-    </div>
-
-    <script src="main.js"></script>
+    <main>
+        <header>
+            <h1>Cursos Grátis</h1>
+            <img src="imagens/curso-em-video-cor.png" alt="Curso em Vídeo">
+        </header>
+        <article>
+            <h2>Curso de HTML5 com CSS3</h2>
+            <img class="lado" src="imagens/curso-html-css.png" alt="Curso HTML">
+            <p>A <abbr title="HyperText Markup Language">HTML</abbr> é uma linguagem de marcação para a criação de sites. Atualmente na versão 5, ela usa a semântica dos elementos para criar o conteúdo de uma página Web. Com as <abbr title="Cascading Style Sheets">CSS</abbr>, criamos as configurações visuais que um site vai ter.</p>
+            <p><a href="curso-html.html">Acesse o curso de HTML5</a></p>
+        </article>
+        <article>
+            <h2>Curso de JavaScript</h2>
+            <img class="lado" src="imagens/curso-javascript.png" alt="Curso JS">
+            <p><abbr title="JavaScript">JavaScript</abbr> é uma linguagem de script criada para aumentar a interatividade entre um site e seus visitantes. Os códigos em JS são executados dentro do navegador e dão acesso aos elementos HTML por meio do <abbr title="Document Object Model">DOM</abbr>.</p>
+            <p><a href="curso-js.html">Acesse o curso de JavaScript</a></p>
+        </article>
+    </main>
 </body>
 </html>
