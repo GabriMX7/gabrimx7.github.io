@@ -3,7 +3,7 @@ body {
   width: auto;
   height: auto;
   color: white;
-  background-color: #444444;
+  background-color: #000000;
   font-family: Arial, sans-serif;
 }
 
@@ -18,7 +18,7 @@ body {
 
 /* Botão */
 .button1 {
-  background-color: #ff0000;
+  background-color: #000000;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -31,7 +31,7 @@ body {
 }
 
 .button1:hover {
-  background-color: #626262;
+  background-color: #000000;
 }
 
 /* centralização */
@@ -48,8 +48,8 @@ body {
 .corWheat {
   color: wheat;
 }
-.corRed {
-  color: red;
+.corWheat {
+  color: wheat;
 }
 
 /* fontes */
