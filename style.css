@@ -1,237 +1,119 @@
 /* fundo principal */
-
 body {
-
   width: auto;
-
   height: auto;
-
   color: white;
-
-  background-color: #000000;
-
+  background-color: #1a1a1a;
   font-family: Arial, sans-serif;
-
 }
-
-
 
 /* body ul */
-
 .bodyul {
-
   display: flex;
-
   justify-content: space-between;
-
   list-style-type: none;
-
   align-items: center;
-
   padding: 16px;
-
 }
-
-
 
 /* Botão */
-
 .button1 {
-
-  background-color: #000000;
-
+  background-color: #ff0000;
   border: none;
-
   color: white;
-
   padding: 10px 20px;
-
   text-align: center;
-
   text-decoration: none;
-
   font-size: 16px;
-
   border-radius: 5px;
-
   cursor: pointer;
-
   transition: background-color 0.3s ease;
-
 }
-
-
 
 .button1:hover {
-
-  background-color: #000000;
-
+  background-color: #cc0000;
 }
-
-
 
 /* centralização */
-
 .JhowImage {
-
   text-align: center;
-
 }
-
-
 
 .centro2 {
-
   display: flex;
-
   justify-content: center;
-
 }
-
-
 
 /* cor */
-
 .corWheat {
-
   color: wheat;
-
 }
-
-.corWheat {
-
-  color: wheat;
-
+.corRed {
+  color: red;
 }
-
-
 
 /* fontes */
-
 .font1 {
-
   font-family: Arial, Helvetica, sans-serif;
-
 }
-
-
 
 /* img */
-
 .img1 {
-
   width: 150px;
-
   height: 150px;
-
   border-radius: 50%;
-
   border: 5px solid red;
-
 }
-
-
 
 .img2 {
-
   width: 100px;
-
   height: 75px;
-
 }
-
-
 
 /* Modificação para dispor as redes sociais na horizontal */
-
 .RedesCentro {
-
   display: flex;
-
   justify-content: center;
-
 }
-
-
 
 /* Alinhar os ícones e textos das redes sociais */
-
 .RedesSociais .Button {
-
   display: flex;
-
 }
-
-
 
 /* Remover linha azul nos links */
-
 .RedesSociais .Button a {
-
   text-decoration: none;
-
 }
-
-
 
 .RedesSociais .Button>div {
-
   margin: 0 10px;
-
   /* Espaçamento entre os ícones */
-
 }
-
-
 
 .RedesSociais .Button .img2 {
-
   display: block;
-
   /* Garante que a imagem fique alinhada corretamente */
-
   margin: 0 auto;
-
   /* Centraliza a imagem dentro do seu contêiner */
-
 }
-
-
 
 /* proteção */
-
 body {
-
   -webkit-touch-callout: none; 
-
   -webkit-user-select: none; 
-
   -khtml-user-select: none; 
-
   -moz-user-select: none; 
-
   -ms-user-select: none; 
-
   user-select: none; 
-
 }
 
-
-
 body, html {
-
   touch-action: manipulation; 
-
   -webkit-touch-callout: none; 
-
   -webkit-user-select: none; 
-
   -khtml-user-select: none; 
-
   -moz-user-select: none; 
-
   -ms-user-select: none; 
-
   user-select: none; 
-
 }
