@@ -38,7 +38,7 @@ body {
 
 .button1 {
 
-  background-color: #ff0000;
+  background-color: #000000;
 
   border: none;
 
@@ -64,7 +64,7 @@ body {
 
 .button1:hover {
 
-  background-color: #626262;
+  background-color: #000000;
 
 }
 
@@ -98,9 +98,9 @@ body {
 
 }
 
-.corRed {
+.corWheat {
 
-  color: red;
+  color: wheat;
 
 }
 
