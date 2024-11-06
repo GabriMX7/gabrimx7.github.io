@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site - GitHub Pages</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Roboto, sans-ttf;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 36px;
+        }
+        p {
+            font-size: 20px;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 22px;
+            padding: 12px 24px;
+            margin: 20px;
+            display: inline-block;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 18px;
+        }
+        #data-hora {
+            font-size: 24px;
+            margin-top: 20px;
+            color: red; /* Data e hora em vermelho */
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao meu site!</h1>
+    <p>Aqui estão alguns links úteis:</p>
+
+    <!-- Exibição das imagens com links -->
+    <img src="20241105_234633.jpg" alt="Descrição da Imagem" style="width: 100%; height: auto;">
+
+
+    <!-- Link para o Discord -->
+    <a href="https://dsc.gg/familia-do-g7" target="_blank">Entre no meu Discord</a>
+
+    <!-- Link para o YouTube -->
+    <a href="https://youtube.com/@gabrimx7?si=CPabEcqtHx1YbOe3" target="_blank">Visite meu canal no YouTube</a>
+
+    <section class = "•">
+<h1 class="centro2">Vídeos</h1>
+        <iframe width="500" height="300" src="https://youtube.com/embed/WXtNOC-jO-k?si" frameborder="0" allowfullscreen></iframe>
+
+    <!-- Exibir a data e hora atuais -->
+    <div id="data-hora"></div>
+
+    <footer>
+        <p>Função De Datas Em Breve</p>
+    </footer>
+
+    <script>
+        // Função para formatar a data e hora
+        function mostrarDataHora() {
+            const data = new Date();
+            const dia = data.getDate().toString().padStart(2, '0');
+            const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+            const ano = data.getFullYear();
+            const horas = data.getHours().toString().padStart(2, '0');
+            const minutos = data.getMinutes().toString().padStart(2, '0');
+            const segundos = data.getSeconds().toString().padStart(2, '0');
+            const horaFormatada = `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}`;
+
+            document.getElementById('data-hora').innerText = `Data E Hora Atual: ${horaFormatada}`;
+        }
+
+        // Atualizar a data e hora a cada segundo
+        setInterval(mostrarDataHora, 1000);
+
+        // Exibir a data e hora inicialmente
+        mostrarDataHora();
+
+    </script>
+</body>
+</html>
