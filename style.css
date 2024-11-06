@@ -1,34 +1,16 @@
-/* Estilos gerais */
+/* Definindo a fonte personalizada */
+@font-face {
+    font-family: 'MinhaFontePersonalizada';
+    src: url('assets/fonts/minha-fonte.woff2') format('woff2'),
+         url('assets/fonts/minha-fonte.woff') format('woff'),
+         url('assets/fonts/minha-fonte.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Aplicando a fonte ao corpo */
 body {
-    font-family: 'Roboto', sans-serif;
-}
-
-.navbar-brand {
-    font-weight: bold;
-}
-
-.banner {
-    background-color: #333;
-    color: white;
-    padding: 50px 20px;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-#youtube .btn-danger,
-#discord .btn-primary {
-    font-size: 1.2em;
-    padding: 10px 20px;
-}
-
-footer {
-    margin-top: 50px;
-    font-size: 0.9em;
-}
-
-.container {
-    margin-top: 20px;
+    font-family: 'MinhaFontePersonalizada', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
 }
