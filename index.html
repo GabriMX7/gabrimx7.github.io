@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Site Profissional</title>
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- CSS Customizado -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Barra de Navegação -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Meu Site</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -18,48 +16,56 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#youtube">YouTube</a></li>
+                <li class="nav-item"><a class="nav-link" href="#discord">Discord</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">Serviços</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Banner Principal -->
+    <!-- Banner -->
     <header class="jumbotron text-center">
         <h1 class="display-4">Bem-vindo ao Meu Site Profissional</h1>
-        <p class="lead">Soluções personalizadas para suas necessidades</p>
-        <a href="#services" class="btn btn-primary btn-lg">Saiba mais</a>
+        <p class="lead">Explore nossos conteúdos no YouTube e junte-se ao nosso servidor Discord!</p>
     </header>
 
-    <!-- Seção Sobre -->
-    <section id="about" class="container">
-        <h2>Sobre Mim</h2>
-        <p>Sou especialista em [sua área] com [X anos de experiência]...</p>
-    </section>
-
-    <!-- Seção de Serviços -->
-    <section id="services" class="container">
-        <h2>Nossos Serviços</h2>
+    <!-- Seção YouTube -->
+    <section id="youtube" class="container text-center py-5">
+        <h2>Meu Canal no YouTube</h2>
+        <p>Acompanhe os vídeos mais recentes e se inscreva para mais conteúdo.</p>
         <div class="row">
             <div class="col-md-4">
-                <h3>Serviço 1</h3>
-                <p>Descrição do serviço 1...</p>
+                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ID_DO_VIDEO1" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="col-md-4">
-                <h3>Serviço 2</h3>
-                <p>Descrição do serviço 2...</p>
+                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ID_DO_VIDEO2" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="col-md-4">
-                <h3>Serviço 3</h3>
-                <p>Descrição do serviço 3...</p>
+                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ID_DO_VIDEO3" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
+        <a href="https://www.youtube.com/seucanal" class="btn btn-danger mt-3" target="_blank">Visitar Canal</a>
     </section>
 
-    <!-- Seção de Contato -->
-    <section id="contact" class="container">
+    <!-- Seção Discord -->
+    <section id="discord" class="container text-center py-5 bg-light">
+        <h2>Servidor Discord</h2>
+        <p>Junte-se ao nosso servidor Discord para conversas, eventos e uma comunidade ativa!</p>
+        <a href="https://discord.gg/SEU-LINK-DE-INVITE" class="btn btn-primary" target="_blank">Entrar no Discord</a>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="about" class="container text-center py-5">
+        <h2>Sobre Mim</h2>
+        <p>Olá! Sou [Seu Nome], criador de conteúdo especializado em [tema do canal/servidor].</p>
+        <p>Meu objetivo é compartilhar conhecimento e conectar pessoas com interesses em comum.</p>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="container text-center py-5 bg-light">
         <h2>Contato</h2>
+        <p>Entre em contato para colaborações, dúvidas ou sugestões.</p>
         <form>
             <div class="form-group">
                 <label for="name">Nome</label>
@@ -71,9 +77,9 @@
             </div>
             <div class="form-group">
                 <label for="message">Mensagem</label>
-                <textarea class="form-control" id="message" rows="5"></textarea>
+                <textarea class="form-control" id="message" rows="5" placeholder="Sua mensagem"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-dark">Enviar</button>
         </form>
     </section>
 
@@ -81,7 +87,6 @@
         <p>&copy; 2023 Meu Site Profissional</p>
     </footer>
 
-    <!-- Scripts do Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
