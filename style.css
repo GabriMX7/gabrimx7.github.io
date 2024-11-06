@@ -1,31 +1,19 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    text-align: center;
 }
-header {
-    background-color: #ff0000;
+
+header.jumbotron {
+    background: url('assets/banner.jpg') no-repeat center center;
+    background-size: cover;
     color: white;
-    padding: 40px;
+    padding: 80px 20px;
+    margin-bottom: 30px;
 }
-.button {
-    background-color: white;
-    color: #ff0000;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
+
+h2 {
+    margin-top: 30px;
 }
-section {
-    padding: 20px;
-}
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
+
 footer {
     background-color: #333;
     color: white;
