@@ -3,47 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Canal do YouTube</title>
+    <title>Meu Site Profissional</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Customizado -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <h1>Bem-vindo ao Meu Canal do YouTube</h1>
-        <p>Assista aos meus vídeos sobre [tema do canal]</p>
-        <a href="https://www.youtube.com/seucanal" target="_blank" class="button">Inscreva-se no Canal</a>
+    <!-- Barra de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Meu Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Serviços</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner Principal -->
+    <header class="jumbotron text-center">
+        <h1 class="display-4">Bem-vindo ao Meu Site Profissional</h1>
+        <p class="lead">Soluções personalizadas para suas necessidades</p>
+        <a href="#services" class="btn btn-primary btn-lg">Saiba mais</a>
     </header>
 
-    <!-- Galeria de Vídeos -->
-    <section id="videos">
-        <h2>Últimos Vídeos</h2>
-        <div class="video-grid">
-            <div class="video">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ID_DO_VIDEO1" frameborder="0" allowfullscreen></iframe>
+    <!-- Seção Sobre -->
+    <section id="about" class="container">
+        <h2>Sobre Mim</h2>
+        <p>Sou especialista em [sua área] com [X anos de experiência]...</p>
+    </section>
+
+    <!-- Seção de Serviços -->
+    <section id="services" class="container">
+        <h2>Nossos Serviços</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Serviço 1</h3>
+                <p>Descrição do serviço 1...</p>
             </div>
-            <div class="video">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ID_DO_VIDEO2" frameborder="0" allowfullscreen></iframe>
+            <div class="col-md-4">
+                <h3>Serviço 2</h3>
+                <p>Descrição do serviço 2...</p>
             </div>
-            <!-- Adicione mais vídeos conforme necessário -->
+            <div class="col-md-4">
+                <h3>Serviço 3</h3>
+                <p>Descrição do serviço 3...</p>
+            </div>
         </div>
     </section>
 
-    <!-- Seção Sobre -->
-    <section id="about">
-        <h2>Sobre Mim</h2>
-        <p>Breve descrição sobre você e o tipo de conteúdo que você cria no YouTube.</p>
+    <!-- Seção de Contato -->
+    <section id="contact" class="container">
+        <h2>Contato</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" id="name" placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Seu email">
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea class="form-control" id="message" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
     </section>
 
-    <!-- Redes Sociais -->
-    <section id="social">
-        <h2>Redes Sociais</h2>
-        <p>Conecte-se comigo nas redes sociais:</p>
-        <a href="https://twitter.com/seutwitter" target="_blank">Twitter</a> |
-        <a href="https://instagram.com/seuinstagram" target="_blank">Instagram</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Meu Canal do YouTube</p>
+    <footer class="text-center bg-dark text-light py-3">
+        <p>&copy; 2023 Meu Site Profissional</p>
     </footer>
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
