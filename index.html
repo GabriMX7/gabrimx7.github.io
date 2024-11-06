@@ -33,20 +33,49 @@
         footer {
             margin-top: 50px;
         }
+        #data-hora {
+            font-size: 18px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>Bem-vindo ao meu site!</h1>
-    <p>Este site está hospedado no GitHub Pages e contém links para o meu Discord e YouTube.</p>
+    <p>Este site está hospedado no GitHub Pages. Links para o meu Discord e YouTube.</p>
 
     <!-- Link para o Discord -->
     <a href="https://discord.gg/seulinkdiscord" target="_blank">Entre no meu Discord</a>
 
     <!-- Link para o YouTube -->
     <a href="https://www.youtube.com/c/seucanal" target="_blank">Visite meu canal no YouTube</a>
-    
+
+    <!-- Exibir a data e hora atuais -->
+    <div id="data-hora"></div>
+
     <footer>
         <p>Data de criação: 06 de novembro de 2024</p>
     </footer>
+
+    <script>
+        // Função para formatar a data e hora
+        function mostrarDataHora() {
+            const data = new Date();
+            const dia = data.getDate().toString().padStart(2, '0');
+            const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+            const ano = data.getFullYear();
+            const horas = data.getHours().toString().padStart(2, '0');
+            const minutos = data.getMinutes().toString().padStart(2, '0');
+            const segundos = data.getSeconds().toString().padStart(2, '0');
+            const horaFormatada = `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}`;
+
+            document.getElementById('data-hora').innerText = `Data e Hora Atual: ${horaFormatada}`;
+        }
+
+        // Atualizar a data e hora a cada segundo
+        setInterval(mostrarDataHora, 1000);
+
+        // Exibir a data e hora inicialmente
+        mostrarDataHora();
+    </script>
 </body>
 </html>
