@@ -1,34 +1,19 @@
-/* Estilos gerais */
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
-.navbar-brand {
-    font-weight: bold;
-}
-
-.banner {
-    background-color: #333;
-    color: white;
-    padding: 50px 20px;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-#youtube .btn-danger,
-#discord .btn-primary {
-    font-size: 1.2em;
-    padding: 10px 20px;
-}
-
-footer {
-    margin-top: 50px;
-    font-size: 0.9em;
-}
-
+/* Estilo padrão para desktops */
 .container {
-    margin-top: 20px;
+  max-width: 1200px;
+}
+
+/* Estilo para tablets */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Diminui a largura para telas menores */
+  }
+}
+
+/* Estilo para celulares */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 10px; /* Ajusta o padding para telas menores */
+  }
 }
