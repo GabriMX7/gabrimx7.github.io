@@ -1,15 +1,11 @@
-# Social do G7
-aplicativo beta..
-
-# Tested on
-- Termux
+# Site no Github
+site Beta..
 
 # link
 
 [clica aqui para ver o nosso site no GitHub][github]
 
-[github]: https://github.com
-
+[github]: https://gabrimx7.github.io/
 
 # Nex-Pass
 ![](images1.png)
