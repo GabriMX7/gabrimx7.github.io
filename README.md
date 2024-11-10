@@ -6,11 +6,11 @@ Site Beta.. 5.0.v
 
 ## Bio
 
-[Link da biografia](https://bio.link/gabrimx7)
+[Link Da Biografia](https://bio.link/gabrimx7)
 
 ## Suporte 
 
-[Suporte de site](https://dsc.gg/familia-do-g7)
+[Suporte De Site](https://dsc.gg/familia-do-g7)
 
 ## link
 
