@@ -4,13 +4,13 @@
 
 Site Beta.. 5.0.v
 
-## Suporte 
-
-[Suporte de site](https://dsc.gg/familia-do-g7)
-
 ## Bio
 
 [Bio link](https://bio.link/gabrimx7)
+
+## Suporte 
+
+[Suporte de site](https://dsc.gg/familia-do-g7)
 
 ## link
 
