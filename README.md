@@ -1,14 +1,14 @@
 # Site no Github
 
-site Beta..
+Site Beta..
 
 # link
 
-[clica aqui para ver o nosso site no GitHub][github]
+[Clica Aqui Para Ver O Nosso Site No GitHub][github]
 
 [github]: https://gabrimx7.github.io/
 
-# Photos-website..
+# Photos-website
 
 ![](assets/imagem/Screenshot_20241110-143331.png)
 
