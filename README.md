@@ -2,13 +2,11 @@
 
 Site Beta..
 
-[Texto do link][referencia]
-
-[referencia]: https://bio.link/gabrimx7
-
 # Bio
 
 [Bio link](https://bio.link/gabrimx7)
+
+[Visite o GitHub](https://github.com)
 
 # link
 
