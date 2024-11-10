@@ -1,6 +1,3 @@
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/cHDTJGXrvJ)
-[![##Youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@GabriMX7?si=DKbFBDCW5V9GL3k0)
-
 ## Site no Github ##
 
 Site Beta..
@@ -9,25 +6,25 @@ Site Beta..
 
 [Visite o GitHub](https://github.com)
 
-# Bio
+## Bio
 
 [Bio link](https://bio.link/gabrimx7)
 
 [Visite o GitHub](https://github.com)
 
-# link
+## link
 
 [Clica Aqui Para Ver O Nosso Site No GitHub][github]
 
 [github]: https://gabrimx7.github.io/
 
-# Photos-website
+## Photos-website
 
 ![](assets/imagem/Screenshot_20241110-143331.png)
 
-# Credits 
+## Credits 
 
 https://github.com/GabriMX7
 
-# Warning
+## Warning
 ***Esta ferramenta é apenas para fins educacionais.  Não somos responsáveis por qualquer uso indevido ou atividades ilegais..***
