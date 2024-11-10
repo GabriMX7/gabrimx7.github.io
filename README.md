@@ -6,7 +6,7 @@ aplicativo beta..
 
 # link
 
-[Veja o site do GitHub][github]
+[clica aqui para ver o nosso site no GitHub][github]
 
 [github]: https://github.com
 
