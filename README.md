@@ -6,7 +6,7 @@ Site Beta.. 5.0.v
 
 ## Bio
 
-[Bio link](https://bio.link/gabrimx7)
+[Link da biografia](https://bio.link/gabrimx7)
 
 ## Suporte 
 
