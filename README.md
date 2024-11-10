@@ -6,7 +6,7 @@ Site Beta.. 5.0.v
 
 ## Suporte 
 
-[> Suporte de site](https://dsc.gg/familia-do-g7)
+[Suporte de site](https://dsc.gg/familia-do-g7)
 
 ## Bio
 
