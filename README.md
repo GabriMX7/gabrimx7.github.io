@@ -4,7 +4,7 @@ Site Beta..
 
 # Bio
 
-[Texto do link](https://bio.link/gabrimx7)
+[Bio link](https://bio.link/gabrimx7)
 
 # link
 
