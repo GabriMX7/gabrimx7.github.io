@@ -12,9 +12,9 @@ site Beta..
 
 ![](assets/imagem/Screenshot_20241110-143331.png)
 
-# credits 
+# Credits 
 
-github.com/GabriMX7
+https://github.com/GabriMX7
 
 # Warning
 ***Esta ferramenta é apenas para fins educacionais.  Não somos responsáveis por qualquer uso indevido ou atividades ilegais..***
