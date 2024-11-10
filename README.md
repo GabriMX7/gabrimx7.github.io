@@ -2,6 +2,10 @@
 
 Site Beta..
 
+# Bio
+
+[Texto do link](https://bio.link/gabrimx7)
+
 # link
 
 [Clica Aqui Para Ver O Nosso Site No GitHub][github]
