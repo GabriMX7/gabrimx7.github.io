@@ -1,8 +1,8 @@
-## Bem-vindo ao meu página do site 
+## Bem-vindo ao meu página do site.
 
 ## Site no Github ##
 
-Site Beta..
+Site Beta.. 5.0.v
 
 ## Suporte 
 
