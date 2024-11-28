@@ -1,22 +1,19 @@
-body {
-    background-image: url('assets/imagem/lmage.jpg');
-    background-size: cover; /* Ajusta automaticamente para qualquer tela */
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0;
-}
-/* Para celulares menores */
-@media (max-width: 768px) {
-    body {
-        background-size: contain; /* Ajuste para caber no celular */
-        background-attachment: scroll; /* Permite que o fundo role */
-    }
+/* Estilo padrão para desktops */
+.container {
+  max-width: 1200px;
 }
 
-/* Para telas grandes (PCs) */
-@media (min-width: 1024px) {
-    body {
-        background-size: cover; /* Preenche toda a tela */
-        background-attachment: fixed; /* Fundo fixo no PC */
-    }
+/* Estilo para tablets */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Diminui a largura para telas menores */
+  }
+}
+
+/* Estilo para celulares */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 10px; /* Ajusta o padding para telas menores */
+  }
 }
