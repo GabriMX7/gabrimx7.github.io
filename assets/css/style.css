@@ -1,19 +1,22 @@
-/* Estilo padrão para desktops */
-.container {
-  max-width: 1200px;
+body {
+    background-image: url('assets/imagem/b7e9e7bef4ca6c2c5b0f6859ded7ba6e.jpg');
+    background-size: cover; /* Ajusta automaticamente para qualquer tela */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
 }
-
-/* Estilo para tablets */
+/* Para celulares menores */
 @media (max-width: 768px) {
-  .container {
-    max-width: 90%; /* Diminui a largura para telas menores */
-  }
+    body {
+        background-size: contain; /* Ajuste para caber no celular */
+        background-attachment: scroll; /* Permite que o fundo role */
+    }
 }
 
-/* Estilo para celulares */
-@media (max-width: 480px) {
-  .container {
-    max-width: 100%;
-    padding: 10px; /* Ajusta o padding para telas menores */
-  }
+/* Para telas grandes (PCs) */
+@media (min-width: 1024px) {
+    body {
+        background-size: cover; /* Preenche toda a tela */
+        background-attachment: fixed; /* Fundo fixo no PC */
+    }
 }
