@@ -428,8 +428,8 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
             const horas = data.getHours().toString().padStart(2, '0');
             const minutos = data.getMinutes().toString().padStart(2, '0');
             const segundos = data.getSeconds().toString().padStart(2, '0');
-            const horaFormatada = `${dia}/${mes}/${ano} 
-            ${horas}:${minutos}:${segundos}`;
+            const horaFormatada = `${horas}:${minutos}:${segundos}
+            ${dia}/${mes}/${ano}`;
 
             document.getElementById('data-hora').innerText = `${horaFormatada}`;
         }
