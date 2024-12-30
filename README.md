@@ -8,8 +8,6 @@
 
 <h2 align="center">https://bio.link/gabrimx7</h2>
 
-## Suporte 
-
 [Suporte De Site](https://dsc.gg/familia-do-g7)
 
 ## link
