@@ -1,8 +1,8 @@
 <h2 align="center">⚡ Olá Seja Bem Vinda A Página Do Site ao GabriMX7</h2>
 
-<h3 align="center">Site no Github
+<h3 align="center">Site no Github</h3>
   
-- esse site é para você que gosta de datas modificado e muito mais, espero que curta o site.</h3>
+<h3 align="center">- esse site é para você que gosta de datas modificado e muito mais, espero que curta o site.</h3>
 
 [Link Da Biografia](https://bio.link/gabrimx7)
 
