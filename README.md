@@ -14,14 +14,6 @@
 <img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="assets/img/loga1.png" width='800'>
 </div>
 
-
-<h1 align="center">📬 Suporte de Site</h1>
-
-<h3 align="center">Contato</h3>
-
-<h2 align="center">https://dsc.gg/gabrimx7</h2>
-
-
 <h1 align="center"> 🤝 Contribuições e Feedback</h1>
 
 <h3 align="center">Sua opinião é importante para nós!
@@ -29,6 +21,13 @@
 - Envie sugestões ou relatórios de bugs através da seção de Contato no site.
 
 - Participe do nosso Discord para compartilhar ideias e colaborar com a comunidade.  </h3>
+
+
+<h1 align="center">📬 Suporte de Site</h1>
+
+<h3 align="center">Contato</h3>
+
+<h2 align="center">https://dsc.gg/gabrimx7</h2>
 
 ##
 
