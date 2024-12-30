@@ -29,7 +29,13 @@
 
 <h2 align="center">https://github.com/GabriMX7</h2> 
 
-## Warning
-***Esta ferramenta é apenas para fins educacionais.  Não somos responsáveis por qualquer uso indevido ou atividades ilegais..***
 
-[github]: https://gabrimx7.github.io/
+<h1 align="center">Contato 📬</h1>
+
+<h3 align="center">Se tiver dúvidas ou sugestões, entre em contato:  </h3>
+
+  - E-mail : [gabrimx7@example.com](gabrimx7@example.com)
+
+  - Redes Sociais : [Seu Perfil](https://bio.link/gabrimx7)
+
+
