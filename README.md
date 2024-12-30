@@ -42,7 +42,7 @@
 
 <h1 align="center">Contato 📬
 
-`` Se tiver dúvidas ou sugestões, entre em contato:`` </h1>
+`Se tiver dúvidas ou sugestões, entre em contato:` </h1>
 
 <h3 align="center">  </h3>
 
