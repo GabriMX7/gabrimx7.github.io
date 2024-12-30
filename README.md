@@ -6,13 +6,13 @@
 
 ##
 
-<h2 align="center">https://bio.link/gabrimx7
+<h2 align="center">Suporte de Site</h2>
 
 [Suporte De Site](https://dsc.gg/familia-do-g7)
 
 [Clica Aqui Para Ver O Nosso Site No GitHub][github]
 
-[github]: https://gabrimx7.github.io/</h2>
+[github]: https://gabrimx7.github.io/
 
 ## Photos-website
 
