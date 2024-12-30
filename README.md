@@ -16,7 +16,7 @@
 <h2 align="center">https://dsc.gg/gabrimx7</h2>
 
 
-<h1 align="center">Contribuições e Feedback 🤝</h1>
+<h1 align="center"> 🤝 Contribuições e Feedback</h1>
 
 <h3 align="center">Sua opinião é importante para nós!
 
@@ -25,9 +25,9 @@
 - Participe do nosso Discord para compartilhar ideias e colaborar com a comunidade.  </h3>
 
 
-## Credits 
+ <h1 align="center">Créditos de Site </h1>
 
-https://github.com/GabriMX7
+<h2 align="center">https://github.com/GabriMX7</h2> 
 
 ## Warning
 ***Esta ferramenta é apenas para fins educacionais.  Não somos responsáveis por qualquer uso indevido ou atividades ilegais..***
