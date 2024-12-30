@@ -12,9 +12,13 @@
 
 <h3 align="center">https://gabrimx7.github.io/ </h3>
 
+##
+
 <div align="center">
 <img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="assets/img/loga1.png" width='800'>
 </div>
+
+##
 
 <h1 align="center"> 🤝 Contribuições e Feedback</h1>
 
