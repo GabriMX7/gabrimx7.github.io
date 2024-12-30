@@ -32,9 +32,11 @@
 
 ##
 
-<h2 align="center">🐣 Créditos de Site</h2>
+<h1 align="center">🐣 Créditos de Site</h1>
 
-<h2 align="center">https://github.com/GabriMX7</2>
+<h3 align="center">Contato</h3>
+
+<h2 align="center">https://github.com/GabriMX7</h2>
 
 ##
 
