@@ -1,8 +1,6 @@
-<h2 align="center">Olá Seja Bem Vinda A Página Do Site ao RG7s</h2>
+<h2 align="center">Olá Seja Bem Vinda A Página Do Site ao GabriMX7</h2>
 
 ## Site no Github ##
-
-Site Beta.. 5.0.v
 
 ## Bio
 
