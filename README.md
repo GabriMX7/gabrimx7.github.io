@@ -26,8 +26,9 @@
 
 - Participe do nosso Discord para compartilhar ideias e colaborar com a comunidade.  </h3>
 
+##
 
- <h1 align="center">Créditos de Site </h1>
+<h1 align="center">Créditos de Site </h1>
 
 <h2 align="center">https://github.com/GabriMX7</h2> 
 
