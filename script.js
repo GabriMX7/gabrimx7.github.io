@@ -19,8 +19,8 @@ let x = setInterval(function() {
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Exibir o resultado em um elemento HTML
-  countdownElement.innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+  countdownElement.innerHTML = days + "31" + hours + "00"
+  + minutes + "00" + seconds + "59";
 
   // Se a contagem regressiva tiver terminado, escreva algum texto
   if (distance < 0) {
