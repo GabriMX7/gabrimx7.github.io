@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Em Memória</title>
-  <style>
-    body {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      font-family: 'Times New Roman', serif;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    img {
-      max-width: 100%;
-      margin-bottom: 20px;
-    }
-  </style>
+    <title>Estamos Atualizando!</title>
+    <style>
+        /* Seu CSS aqui */
+    </style>
 </head>
 <body>
-  <img src="sua-imagem.jpg" alt="Uma imagem significativa">
-  <h1>Em Memória de [Nome]</h1>
-  <p>[Mensagem de conforto]</p>
+    <h1>Estamos Atualizando!</h1>
+    <p>Volte em breve. Estamos trabalhando para melhorar sua experiência.</p>
+    <p id="countdown"></p>
+
+    <script>
+        // Define o tempo da contagem regressiva em segundos
+        var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+
+        // Atualiza o contador a cada segundo
+        var x = setInterval(function() {
+
+            // Obtém a data e hora de agora
+            var now = new Date().getTime();
+
+            // Encontra a distância entre agora e a data de contagem regressiva
+            var distance = countDownDate - now;
+
+            // Cálculos para dias, horas, minutos e segundos
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Exibe o resultado em um elemento HTML
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // Se a contagem regressiva tiver terminado, escreva algum texto
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRADO";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
