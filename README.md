@@ -40,9 +40,11 @@
 ##
 
 
-<h1 align="center">Contato 📬</h1>
+<h1 align="center">Contato 📬
 
-<h3 align="center">Se tiver dúvidas ou sugestões, entre em contato:  </h3>
+Se tiver dúvidas ou sugestões, entre em contato: </h1>
+
+<h3 align="center">  </h3>
 
   - E-mail : [gabrimx7@example.com](gabrimx7@example.com)
 
