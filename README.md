@@ -8,11 +8,11 @@
 
 <h2 align="center">📬 Suporte de Site</h2>
 
-<h3 align="center">link de suporte de Site.</h3>
+<h3 align="center">link de suporte de Site.
 
 [Clica Aqui Para Ver O Nosso Site No GitHub][github]
 
-[github]: https://gabrimx7.github.io/
+</h3>
 
 ## Photos-website
 
