@@ -1,0 +1,43 @@
+footer {
+  background: #141414;
+  padding: 40px;
+  padding-bottom: 50px;
+}
+footer .footer-title {
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+footer .footer-description {
+  color: #999;
+  margin-bottom: 5px;
+}
+footer .copyright {
+  color: #999;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  margin-top: 30px;
+  padding-bottom: 13px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+footer .author, footer .link {
+  color: #999;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  text-decoration: none;
+  transition: 0.5s;
+}
+footer .link {
+  margin-bottom: 10px;
+}
+footer .link:hover {
+  color: #ff0000;
+}
+footer .footer-social-network a i {
+  font-size: 2rem;
+  color: #999;
+  text-decoration: none;
+  transition: 0.5s;
+}

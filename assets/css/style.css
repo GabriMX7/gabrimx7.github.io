@@ -1,0 +1,19 @@
+/* Estilo padrão para desktops */
+.container {
+  max-width: 1200px;
+}
+
+/* Estilo para tablets */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Diminui a largura para telas menores */
+  }
+}
+
+/* Estilo para celulares */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 10px; /* Ajusta o padding para telas menores */
+  }
+}
