@@ -5,7 +5,7 @@
 <h3 align="center">Desvende um mundo de possibilidades com datas e muito mais! Explore nosso site e se surpreenda.</h3>
 
 <div align="center">
-<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src=".github/gabrimx7.png" width='800'>
+<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src=".github/loga1.png" width='800'>
 </div>
 
 
