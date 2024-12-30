@@ -4,14 +4,6 @@
 
 <h3 align="center">Desvende um mundo de possibilidades com datas e muito mais! Explore nosso site e se surpreenda.. 🎮 </h3>
 
-
-
-
-
-<h2 align="center"></h2>
-
-<h2 align="center"></h2>
-
 <h2 align="center"></h2>
 
 ##
