@@ -5,7 +5,7 @@
 <h3 align="center">Desvende um mundo de possibilidades com datas e muito mais! Explore nosso site e se surpreenda.</h3>
 
 
-<h1 align="center">🌐 Aqui estão alguns links úteis </h1>
+<h1 align="center">📬 Suporte de Site< </h1>
 
 <h3 align="center">Contato</h3>
 
@@ -15,16 +15,6 @@
 
 <h2 align="center">https://dsc.gg/gabrimx7</h2>
 
-
-<h2 align="center">📬 Suporte de Site</h2>
-
-<h3 align="center">link de suporte de Site.</h3>
-
-
-
-## Photos-website
-
-![](assets/imagem/Screenshot_20241110-143331.png)
 
 ## Credits 
 
