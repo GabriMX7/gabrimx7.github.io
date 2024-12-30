@@ -45,10 +45,10 @@
 
 ##
 
+<h3 align="center">📬 Contato 
+</h3>
 
-<h1 align="center">Contato 📬
-
-`Se tiver dúvidas ou sugestões, entre em contato:` </h1>
+<h3 align="center">Se tiver dúvidas ou sugestões, entre em contato: </h3>
 
 <h3 align="center">  </h3>
 
