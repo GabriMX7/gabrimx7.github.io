@@ -28,9 +28,9 @@
 
 ##
 
-<h1 align="center">Créditos de Site </h1>
+<h1 align="center">Créditos de Site
 
-<h2 align="center">https://github.com/GabriMX7</h2> 
+https://github.com/GabriMX7</h1> 
 
 
 <h1 align="center">Contato 📬</h1>
