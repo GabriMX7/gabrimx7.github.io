@@ -17,10 +17,6 @@
 
 <h2 align="center">https://dsc.gg/gabrimx7</h2>
 
-<div align="center">
-<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="assets/img/loga2.png" width='800'>
-</div>
-
 <h1 align="center"> 🤝 Contribuições e Feedback</h1>
 
 <h3 align="center">Sua opinião é importante para nós!
