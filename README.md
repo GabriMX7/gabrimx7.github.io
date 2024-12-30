@@ -17,6 +17,7 @@
 
 <h2 align="center">https://dsc.gg/gabrimx7</h2>
 
+
 <h1 align="center"> 🤝 Contribuições e Feedback</h1>
 
 <h3 align="center">Sua opinião é importante para nós!
