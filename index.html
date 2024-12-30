@@ -1,45 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Estamos Atualizando!</title>
-    <style>
-        /* Seu CSS aqui */
-    </style>
+  <title>Cronômetro</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Estamos Atualizando!</h1>
-    <p>Volte em breve. Estamos trabalhando para melhorar sua experiência.</p>
-    <p id="countdown"></p>
+  <div id="timer">00:00</div>
+  <button id="start">Iniciar</button>
+  <button id="pause">Pausar</button>
+  <button id="reset">Reiniciar</button>
 
-    <script>
-        // Define a data de término da atualização (ajuste conforme necessário)
-        var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime(00:00);
-
-        // Atualiza o contador a cada segundo
-        var x = setInterval(function() {
-
-            // Obtém a data e hora de agora
-            var now = new Date().getTime(00:00);
-
-            // Encontra a distância entre agora e a data de contagem regressiva
-            var distance = countDownDate - now;
-
-            // Cálculos para dias, horas, minutos e segundos
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Exibe o resultado em um elemento HTML
-            document.getElementById("countdown").innerHTML = days 05 "d " 00 hours 00 "h "
-            00 minutes 00 "m " + seconds 59 "s ";
-
-            // Se a contagem regressiva tiver terminado, escreva algum texto
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRADO";
-            }
-        }, 1000);
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
