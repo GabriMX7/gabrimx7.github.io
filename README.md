@@ -36,6 +36,6 @@
 
   - E-mail : [gabrimx7@example.com](gabrimx7@example.com)
 
-  - Redes Sociais : [Seu Perfil](https://bio.link/gabrimx7)
+  - Redes Sociais : [Seu Perfil](https://gabrimx7.github.io/)
 
 
