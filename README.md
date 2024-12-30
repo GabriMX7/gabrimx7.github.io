@@ -2,7 +2,7 @@
 
 <h2 align="center">Site no Github</h2>
 
-<h2 Desvende um mundo de possibilidades com datas e muito mais! Explore nosso site e se surpreenda.</h2>
+<h2 align="center">Desvende um mundo de possibilidades com datas e muito mais! Explore nosso site e se surpreenda.</h2>
 
 ##
 
