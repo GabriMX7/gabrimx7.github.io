@@ -27,13 +27,13 @@
 
 <h3 align="center">Contato</h3>
 
-<h2 align="center">https://dsc.gg/gabrimx7</h2>
+<h3 align="center">https://dsc.gg/gabrimx7</h3>
 
 ##
 
 <h1 align="center">🐣 Créditos de Site</h1>
 
-<h2 align="center">https://github.com/GabriMX7</h2>
+<h3 align="center">https://github.com/GabriMX7</h3>
 
 ##
 
