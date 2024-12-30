@@ -6,8 +6,6 @@
 
 <h2 align="center"></h2>
 
-##
-
 <h3 align="center">https://gabrimx7.github.io/</h3>
 
 ##
