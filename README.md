@@ -4,14 +4,16 @@
   
 <h3 align="center">Desvende um mundo de possibilidades com datas e muito mais! Explore nosso site e se surpreenda.</h3>
 
+<div align="center">
+<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src=".github/gabrimx7.png" width='800'>
+</div>
+
 
 <h1 align="center">📬 Suporte de Site</h1>
 
 <h3 align="center">Contato</h3>
 
 <h2 align="center">https://gabrimx7.github.io/</h2>
-
-<h2 align="center">https://bio.link/gabrimx7</h2>
 
 <h2 align="center">https://dsc.gg/gabrimx7</h2>
 
@@ -36,6 +38,6 @@
 
   - E-mail : [gabrimx7@example.com](gabrimx7@example.com)
 
-  - Redes Sociais : [Seu Perfil](https://gabrimx7.github.io/)
+  - Redes Sociais : [Seu Perfil](https://bio.link/gabrimx7)
 
 
