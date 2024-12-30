@@ -33,7 +33,8 @@
 ##
 
 <h2 align="center">🐣 Créditos de Site</h2>
-<h3 align="center">https://github.com/GabriMX7</3>
+
+<h2 align="center">https://github.com/GabriMX7</2>
 
 ##
 
