@@ -6,7 +6,6 @@
   
 <h3 align="center">Desvende um mundo de possibilidades com datas e muito mais! Explore nosso site e se surpreenda.</h3>
 
-## 
 
 <h3 align="center">https://gabrimx7.github.io/</h3>
 
