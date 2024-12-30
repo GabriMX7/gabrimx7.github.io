@@ -1,38 +1,30 @@
-const timerDisplay = document.getElementById('timer');
-const startButton = document.getElementById('start');
-const pauseButton = document.getElementById('pause');
-const resetButton = document.getElementById('reset');
+const countdownElement = document.getElementById('countdown');
 
-let startTime = 0;
-let elapsedTime = 0;
-let timerInterval;
+// Defina a data e hora de término da manutenção (ajuste conforme necessário)
+const countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
 
-function startTimer() {
-  startTime = Date.now();
-  timerInterval = setInterval(updateTimer, 10);
-}
+// Atualiza o contador a cada segundo
+let x = setInterval(function() {
 
-function pauseTimer() {
-  clearInterval(timerInterval);
-  elapsedTime += Date.now() - startTime;
-}
+  // Obter a data e hora atuais
+  const now = new Date().getTime();
 
-function resetTimer() {
-  clearInterval(timerInterval);
-  startTime = 0;
-  elapsedTime = 0;
-  timerDisplay.textContent = '00:00';
-}
+  // Encontrar a distância entre a data de contagem regressiva e agora
+  const distance = countDownDate - now;
 
-function updateTimer() {
-  const currentTime = Date.now();
-  const delta = currentTime - startTime;
-  const totalElapsedTime = elapsedTime + delta;
-  const seconds = Math.floor((totalElapsedTime / 1000) % 60);
-  const minutes = Math.floor((totalElapsedTime / (1000 * 60)) % 60);
-  timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-}
+  // Cálculos para dias, horas, minutos e segundos
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-startButton.addEventListener('click', startTimer);
-pauseButton.addEventListener('click', pauseTimer);
-resetButton.addEventListener('click', resetTimer);
+  // Exibir o resultado em um elemento HTML
+  countdownElement.innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // Se a contagem regressiva tiver terminado, escreva algum texto
+  if (distance < 0) {
+    clearInterval(x);
+    countdownElement.innerHTML = "Estamos de volta!";
+  }
+}, 1000);
