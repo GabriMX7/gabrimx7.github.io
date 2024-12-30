@@ -1,7 +1,7 @@
 const countdownElement = document.getElementById('countdown');
 
 // Defina a data e hora de término da manutenção (ajuste conforme necessário)
-const countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+const countDownDate = new Date("Seg, 30 00:00:59").getTime();
 
 // Atualiza o contador a cada segundo
 let x = setInterval(function() {
