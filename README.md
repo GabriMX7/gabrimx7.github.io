@@ -28,12 +28,10 @@
 
 ##
 
-<h2 align="center">Créditos de Site</h2>
-
+<h2 align="center">🐣 Créditos de Site</h2>
 <h3 align="center">https://github.com/GabriMX7</3>
 
 ##
-
 
 
 <h1 align="center">Contato 📬</h1>
