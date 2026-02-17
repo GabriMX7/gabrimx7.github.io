@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #0b0b0b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #B11226;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.profile img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid #0b0b0b;
+  margin-bottom: 10px;
+}
+
+.profile h1 {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.profile p {
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #B11226;
+  font-weight: bold;
+  transition: 0.3s ease;
+  border: 2px solid #B11226;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #D9C2AD;
+  color: #B11226;
+  border: 2px solid #D9C2AD;
+}
+
+.copyright {
+  margin-top: 40px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.copyright p {
+  letter-spacing: 1px;
+}
