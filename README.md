@@ -1,1 +1,0 @@
-# gabrimx7.github.io
