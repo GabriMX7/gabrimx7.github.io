@@ -1,50 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manutenção</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            font-size: 50px;
-        }
-        #countdown {
-            font-size: 30px;
-        }
-    </style>
+    <title>My Website</title>
+    <script>
+        const date = new Date('2026-03-03T00:00:00Z');
+        console.log(date);
+    </script>
 </head>
 <body>
-    <h1>Estamos em manutenção</h1>
-    <p>O site estará disponível em: 02/03/2026</p>
-    <div id="countdown"></div>
-
-    <script>
-        const returnDate = new Date("2026-03-02T00:00:00Z").getTime();
-
-        const countdownFunction = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = returnDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = days + " dias " + hours + " horas "
-                + minutes + " minutos " + seconds + " segundos ";
-
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "A manutenção foi concluída!";
-            }
-        }, 1000);
-    </script>
+    <h1>Current Date: 2026-03-03</h1>
+    <p>Today's date is 2026-03-03.</p>
 </body>
 </html>
