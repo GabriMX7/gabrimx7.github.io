@@ -8,7 +8,7 @@
 
 <h3 align="center">https://dsc.gg/gabrimx7</h3>
 
-<h1 align="center">Contato 📬</h1>
+<h3 align="center">Contato 📬</h3>
 
 <h3 align="center">Se tiver dúvidas ou sugestões, entre em contato:  </h3>
 
