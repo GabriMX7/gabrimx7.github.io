@@ -1,4 +1,4 @@
-<h1 align="center">Aqui estão alguns links úteis 🌐</h1>
+<h3 align="center">Aqui estão alguns links úteis 🌐</h3>
 
 <h3 align="center">Contato</h3>
 
