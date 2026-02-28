@@ -1,14 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
-    <script>
-        const date = new Date('2026-03-03T00:00:00Z');
-        console.log(date);
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Page</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #00b09b, #96c93d);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      border: 5px solid neon green;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .countdown {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Current Date: 2026-03-03</h1>
-    <p>Today's date is 2026-03-03.</p>
+  <div class="container">
+    <h1>We'll be back soon!</h1>
+    <p>Our site is currently undergoing maintenance.</p>
+    <p>Estimated return date: <strong>29/02/2026</strong></p>
+    <div class="countdown" id="countdown"></div>
+  </div>
+  <script>
+    // Set the date we're counting down to
+    const countDownDate = new Date("2026-02-29T00:00:00").getTime();
+
+    // Update the count down every 1 second
+    const countdownFunction = setInterval(function() {
+      // Get today's date and time
+      const now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      const distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Output the result in an element with id="countdown"
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s " ;
+
+      // If the count down is over, write some text
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
