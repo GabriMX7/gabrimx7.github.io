@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GabriMx7 • Website</title>
+  
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Estilos Base e Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      zoom: 0.85;
+      background-color: #0a0a0a;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    /* --- MENU E SIDEBAR --- */
+    .menu-btn {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      z-index: 1001;
+      background: #121212;
+      border: 1px solid #1f1f1f;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .bar { width: 24px; height: 2px; background: #ff0000; transition: 0.4s; }
+    .menu-btn.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-btn.open .bar:nth-child(2) { opacity: 0; }
+    .menu-btn.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .sidebar {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background: #0a0a0a; /* Fundo mais escuro para combinar com o corpo */
+  border-left: 2px solid #ff0000; /* Linha de borda mais definida */
+  z-index: 1000;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 100px 20px 40px 20px; /* Padding ajustado */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espaço uniforme entre os botões */
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.9);
+}
+
+
+    .sidebar.active { right: 0; }
+    
+    .sidebar a {
+  width: 100%; /* Garante que todos tenham a mesma largura */
+  padding: 16px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alinhamento à esquerda */
+  border-radius: 10px;
+  background: #121212;
+  border: 1px solid #1f1f1f;
+  box-sizing: border-box; /* Evita que o padding aumente o tamanho do botão */
+}
+
+  .sidebar a i {
+  width: 30px; /* Largura fixa para os ícones ficarem alinhados verticalmente */
+  text-align: center;
+}
+   
+
+  .sidebar-header {
+  padding: 0 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #1f1f1f; /* Linha divisória sutil */
+  padding-bottom: 15px;
+}
+
+
+    /* --- TELAS --- */
+    #home-screen, #download-screen { width: 100%; max-width: 420px; }
+
+    /* --- PERFIL --- */
+    .profile { text-align: center; margin: 50px 0 40px; }
+    .profile img {
+      width: 115px; height: 115px;
+      border-radius: 50%; border: 3px solid #ff0000;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+    .profile h1 { font-style: italic; text-transform: uppercase; font-weight: 900; }
+    .profile h1 span { color: #ff0000; }
+
+    /* --- LINKS GRID --- */
+    .links-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 60px; }
+
+      .card {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      padding: 18px 20px; 
+      border-radius: 18px; 
+      text-decoration: none;
+      color: white; 
+      transition: 0.2s ease; 
+      cursor: pointer; 
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      width: 100%;
+      background: #121212;
+    }
+
+    .card.primary { background: linear-gradient(90deg, #ff0000, #b30000); border: none; }
+    .card.discord { background: #5865F2; }
+    .card.purple { background: #a855f7; }
+
+    .card:hover { transform: scale(1.02); }
+    .card:active { transform: scale(0.98); opacity: 0.9; }
+
+    .card-content { display: flex; align-items: center; gap: 15px; text-align: left; }
+    .icon-box { 
+      width: 45px; height: 45px; 
+      background: rgba(255, 255, 255, 0.1); 
+      border-radius: 12px; display: flex; 
+      align-items: center; justify-content: center; 
+      font-size: 1.2rem;
+    }
+
+     /* --- AJUSTE NO CONTAINER DE VÍDEO --- */
+  .video-container { 
+  position: relative; 
+  padding-bottom: 56.25%; /* Mantém proporção 16:9 */
+  height: 0; 
+  overflow: hidden;
+  background: #000;
+}
+
+ .video-container iframe { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  border: none;
+}
+
+  /* --- BOTÕES LADO A LADO --- */
+  .button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide em duas colunas iguais */
+  gap: 10px;
+  width: 100%;
+}
+
+  .btn-download-new { 
+  font-size: 11px; /* Ajuste para caber em telas menores */
+  padding: 14px 5px;
+  white-space: nowrap;
+}
+
+/* Ajuste mobile para botões se a tela for muito pequena */
+@media (max-width: 360px) {
+  .button-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+    /* --- COPYRIGHT STYLE --- */
+    .footer-credits { text-align: center; padding: 40px 0 20px; font-size: 12px; color: #444; font-weight: 500; letter-spacing: 1px; }
+
+    /* --- DOWNLOADS --- */
+    .back-btn { background: none; border: none; color: #ff0000; cursor: pointer; font-weight: bold; margin-bottom: 25px; display: flex; align-items: center; gap: 8px; font-size: 1rem; }
+    
+    .download-card-custom {
+      background: #121212;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #1f1f1f;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-bottom: 2px solid #ff0000; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    
+    .download-content-v2 { padding: 25px; }
+    
+    .download-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+    .download-header h3 { font-size: 20px; font-weight: 900; }
+    .download-header .file-size { text-align: right; font-size: 12px; color: #666; }
+    .download-header .file-size strong { display: block; color: #fff; font-size: 14px; }
+
+    .download-desc { 
+      color: #aaa; 
+      font-size: 14px; 
+      line-height: 1.6; 
+      margin-bottom: 20px; 
+      border-left: 3px solid #ff0000; 
+      padding-left: 15px; 
+    }
+
+    .btn-download-new { 
+      background: #ff0000; 
+      color: white; 
+      padding: 16px; 
+      border-radius: 14px; 
+      font-weight: 900; 
+      text-decoration: none; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 10px; 
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-senha { background: #222 !important; border: 1px solid #333 !important; }
+    .btn-download-new:hover { background: #fff; color: #000; transform: translateY(-3px); }
+    .btn-senha:hover { background: #444 !important; color: #fff !important; }
+
+    .stats-container { display: flex; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .stat-badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #efefef;
+    }
+    .stat-badge i { color: #ff4444; font-size: 14px; }
+
+        /* --- BOTÃO FLUTUANTE --- */
+    .fab-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 998;
+    }
+
+    .fab-button {
+      width: 60px;
+      height: 60px;
+      background: #ff0000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 28px;
+      box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .fab-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      background: #fff;
+      color: #ff0000;
+      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+    }
+
+    /* Animação de pulso suave */
+    @keyframes pulse-red {
+      0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    }
+
+    .fab-button {
+      animation: pulse-red 2s infinite;
+    }
+
+    /* Efeito de brilho no título */
+  .section-header h2 span {
+  color: #ff0000;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+  /* Badge de categoria */
+  .category-badge {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff0000;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #ff0000;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+  /* Organização dos botões lado a lado */
+  .button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+  /* Ajuste no card para parecer com o print */
+  .download-card-custom {
+  background: #0d0d0d !important;
+  border: 1px solid #1a1a1a !important;
+  transition: 0.3s ease;
+}
+
+  .download-card-custom:hover {
+  border-color: #ff0000 !important;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+}
+
+
+  /* Container do cabeçalho */
+  .section-header-v2 {
+  text-align: center;
+  margin-bottom: 35px;
+  margin-top: 10px;
+}
+
+  /* Título Principal (Branco com Destaque Vermelho) */
+  .section-header-v2 h2 {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px; /* Espaço curto para o subtítulo */
+}
+
+  /* O "DOWNLOADS" com brilho */
+  .section-header-v2 h2 span {
+  color: #ff0000;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+  /* Subtítulo Vermelho (Igual ao da imagem) */
+  .subtitle-red {
+  color: #ff0000;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 0;
+}
+
+
+  /* Estilo do Botão Voltar */
+  .back-btn {
+  position: absolute; /* Fixa o botão sem afetar o alinhamento do  título */
+  top: 15px;
+  left: 15px;
+  background: #121212; /* Fundo escuro */
+  border: 1px solid #1f1f1f;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+  z-index: 10;
+}
+
+.back-btn i {
+  color: #ff0000; /* Ícone em vermelho para destaque */
+}
+
+.back-btn:hover {
+  background: #ff0000;
+  border-color: #ff0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); /* Efeito de brilho ao passar o rato */
+}
+
+/* Ajuste do Botão do Menu */
+.menu-btn {
+  position: fixed;
+  top: 15px; /* Alinhado à mesma altura do botão voltar */
+  right: 15px;
+  z-index: 1001;
+  background: #121212;
+  border: 1px solid #1f1f1f;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Garante que as barras do menu sejam vermelhas como na imagem */
+.bar {
+  width: 20px;
+  height: 2px;
+  background: #ff0000; 
+  transition: 0.4s;
+}
+
+/* Container do Cabeçalho da Sidebar */
+.sidebar-header {
+  margin-bottom: 30px;
+  padding-left: 10px;
+}
+
+/* Texto pequeno acima do título */
+.sidebar-subtitle {
+  color: #ff0000;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Título Principal Estilizado */
+.sidebar-title {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  font-style: italic; /* Combina com a logo principal */
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.sidebar-title span {
+  color: #ff0000; /* Ponto final em vermelho */
+}
+
+/* Linha decorativa abaixo do título */
+.title-underline {
+  width: 40px;
+  height: 4px;
+  background: #ff0000;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* Ajuste sutil na sidebar para focar no conteúdo */
+.sidebar {
+  padding: 80px 20px !important;
+  background: linear-gradient(180deg, #0f0f0f 0%, #050505 100%);
+}
+
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 900; /* Peso máximo para destaque */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: #161616; /* Fundo escuro base */
+  border: 1px solid #252525;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de Destaque ao Passar o Mouse (Hover) */
+.sidebar a:hover {
+  background: #ff0000;
+  border-color: #ff4444;
+  transform: translateX(10px); /* Move levemente para a direita */
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.5); /* Brilho externo */
+}
+
+/* Estilização do Ícone dentro do botão */
+.sidebar a i {
+  font-size: 1.3rem;
+  color: #ff0000; /* Ícone vermelho por padrão */
+  transition: 0.3s;
+}
+
+.sidebar a:hover i {
+  color: #fff; /* Ícone fica branco no hover */
+  transform: scale(1.2);
+}
+
+/* Brilho interno sutil */
+.sidebar a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: 0.5s;
+}
+
+.sidebar a:hover::after {
+  left: 100%;
+}
+
+/* Container do novo botão */
+.support-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px; /* Espaço antes do card de download */
+}
+
+/* Estilo do botão inline */
+.support-button-inline {
+  background: #5865F2; /* Cor oficial do Discord */
+  color: white;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 12px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%; /* Ocupa a largura do container */
+  justify-content: center;
+}
+
+.support-button-inline:hover {
+  background: #4752c4;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3);
+}
+
+/* Ocultar o botão flutuante antigo (opcional) */
+.fab-container {
+  display: none;
+}
+
+/* Centraliza o conteúdo da tela de créditos */
+#cit-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinha horizontalmente no centro */
+  text-align: center;
+}
+
+/* Garante que o card de créditos não ocupe a largura inteira se não necessário */
+#cit-screen .download-card-custom {
+  width: 100%;
+  max-width: 400px; /* Mantém o padrão visual dos outros cards */
+}
+
+/* Centraliza o texto e elementos dentro do card de créditos */
+#cit-screen .download-content-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Estilos da Tela de Boas-vindas */
+.welcome-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Garante que fique por cima de tudo */
+  padding: 20px;
+}
+
+.welcome-card {
+  background: #0d0d0d;
+  border: 2px solid #ff0000;
+  border-radius: 20px;
+  padding: 35px 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+  animation: entrance 0.5s ease-out;
+}
+
+.welcome-badge {
+  background: #ff0000;
+  color: white;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.welcome-icon {
+  font-size: 50px;
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.welcome-card h2 {
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.welcome-card h2 span {
+  color: #ff0000;
+}
+
+.welcome-card p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.btn-welcome {
+  background: #ff0000;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 900;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.btn-welcome:hover {
+  background: white;
+  color: black;
+}
+
+@keyframes entrance {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+  </style>
+</head>
+<body>
+     <div id="welcome-screen" class="welcome-overlay">
+  <div class="welcome-card">
+
+    <i class="fas fa-rocket welcome-icon"></i>
+    <h2>ESTAMOS <span>DE VOLTA</span></h2>
+    <p>O site do GabriMX7 foi atualizado! Confira as novas datas e mods otimizados para o seu SA-MP.</p>
+    <button class="btn-welcome" onclick="closeWelcome()">
+      <i class="fas fa-check-circle"></i> ACESSAR SITE
+    </button>
+  </div>
+</div>
+
+
+   <div class="fab-container">
+  <a href="https://discord.gg/cHDTJGXrvJ" class="fab-button" target="_blank" title="Suporte">
+    <i class="fab fa-discord"></i>
+  </a>
+</div>
+
+
+  <div class="menu-btn" id="menuToggle">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+   
+  <nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-subtitle">MENU</span>
+    <h2 class="sidebar-title">NAVEGAÇÃO<span>.</span></h2>
+    <div class="title-underline"></div>
+  </div>
+  
+  <a href="javascript:void(0)" onclick="showHome()"><i class="fas fa-home"></i> Início</a>
+  <a href="javascript:void(0)" onclick="showDownloads()"><i class="fas fa-download"></i> Downloads</a>
+<a href="javascript:void(0)" onclick="showCit()"><i class="fa-solid fa-code"></i> créditos</a>
+
+  
+ <a href="https://youtube.com/@gabrimx7" target="_blank" style="margin-top: auto; border-color: rgba(255,0,0,0.3);">
+    <i class="fas fa-crown"></i> CEO: GabriMX7
+  </a>
+</nav>
+
+
+  <nav class="sidebar" id="sidebar">
+    <a href="javascript:void(0)" onclick="showHome()"><i class="fas fa-home"></i> Início</a>
+    <a href="javascript:void(0)" onclick="showDownloads()"><i class="fas fa-download"></i> Downloads</a>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+
+  <main id="home-screen">
+     <div class="profile">
+      <img src="perfil.jpg" alt="Avatar"> 
+      <h1>GABRI<span>MX7</span></h1>
+      <p>"No meio deles, mas nunca igual a eles."</p>
+
+      <div class="stats-container">
+        <div class="stat-badge"><i class="fas fa-users"></i><span>47g inscritos</span></div>
+        <div class="stat-badge"><i class="fas fa-play"></i><span>27 vídeos</span></div>
+        <div class="stat-badge"><i class="fas fa-bolt"></i><span>SA-MP</span></div>
+      </div>
+    </div>
+
+    <div class="links-grid">
+      <a href="https://youtube.com/@gabrimx7" class="card primary" target="_blank">
+        <div class="card-content">
+          <div class="icon-box"><i class="fab fa-youtube"></i></div>
+          <div><b>YouTube</b><br><small>Inscreva-se no canal</small></div>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+      </a>
+
+      <a href="javascript:void(0)" onclick="showDownloads()" class="card">
+        <div class="card-content">
+          <div class="icon-box"><i class="fas fa-download"></i></div>
+          <div><b>Downloads</b><br><small>Baixe as datas anti-lag</small></div>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+      </a>
+
+      <a href="https://discord.gg/cHDTJGXrvJ" class="card discord" target="_blank">
+        <div class="card-content">
+          <div class="icon-box"><i class="fab fa-discord"></i></div>
+          <div><b>Discord</b><br><small>Entre na comunidade</small></div>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+      </a>
+
+      <a href="https://gabrimx7.github.io/g7.family/" class="card purple" target="_blank">
+        <div class="card-content">
+          <div class="icon-box"><i class="fas fa-users"></i></div>
+          <div><b>G7 Family</b><br><small>Faça parte da família</small></div>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+      </a>
+    </div>
+
+    <footer class="footer-credits">Copyright GabrIMX7 © 2026</footer>
+  </main>
+
+   <main id="cit-screen" style="display: none; position: relative; padding-top: 60px;">
+  <button class="back-btn" onclick="showHome()">
+    <i class="fas fa-chevron-left"></i> VOLTAR
+  </button>
+  
+  <div class="section-header-v2">
+    <h2>CRÉDITO DE <span>SITE</span></h2>
+    <p class="subtitle-red">INFO & G7</p>
+  </div>
+
+  <div class="support-container">
+    <div class="support-button-inline" style="background: #1a1a1a;">
+      <i class="fas fa-info-circle"></i> CRÉDITOS DO SITE
+    </div>
+  </div>
+
+  <div class="download-card-custom">
+    <div class="download-content-v2">
+      <div class="download-header">
+        <div>
+           <span class="category-badge">INFORMAÇÃO</span>
+           <h2 style="margin-top: 10px;">CRÉDITOS</h2>
+        </div>
+      </div>
+  
+      <p class="download-desc"> 100% CRIADO POR AI
+
+      <div class="button-group">
+        <a href="https://youtube.com/playlist?list=PLOGUwj3vyF9VBWTZHJh8ZySTBKTm3UTDz&si=sexyY_F-qa65yyOp" class="btn-download-new">
+          <i class="fas fa-eye"></i> VISUALIZAR
+        </a>
+        <button class="btn-download-new btn-senha" onclick="copyPassword('REGRAS-G7', this)">
+          <i class="fas fa-copy"></i> COPIAR REF
+        </button>
+     </div>
+   </div>
+  </div>
+</main>
+
+
+  <main id="download-screen" style="display: none; position: relative; padding-top: 60px;">
+  <button class="back-btn" onclick="showHome()">
+    <i class="fas fa-chevron-left"></i> VOLTAR
+  </button>
+  
+  <div class="section-header-v2">
+    <h2>CENTRAL DE <span>DOWNLOADS</span></h2>
+    <p class="subtitle-red">MODS & OTIMIZAÇÃO SAMP</p>
+  </div>
+
+   <div class="support-container">
+    <a href="https://discord.gg/cHDTJGXrvJ"    class="support-button-inline" target="_blank">
+      <i class="fab fa-discord"></i> PRECISANDO DE AJUDA? ENTRE NO DISCORD
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/OLLL4t2Ctqo" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">MOD ANDROID</span>
+         <h3>Pack de ícone</h3>
+      </div>
+
+    </div>
+    
+    <p class="download-desc"> ❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.net/iconpack2025" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('GABRIMX7', this)">
+        <i class="fas fa-copy"></i> NÃO POSSUI SENHA
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/E44278CD8mo" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">MOD ANDROID</span>
+         <h3>Pack de ícone</h3>
+      </div>
+     
+    </div>
+    
+    <p class="download-desc"> ❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/icones-v1" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('icones-v1', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/WXtNOC-jO-k" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">APK ANDROID</span>
+         <h3>Download do Apk</h3>
+      </div>
+     
+    </div>
+    
+    <p class="download-desc"> DOWNLOAD DO APK </p>
+    
+    <div class="button-group">
+      <a href="https://bit.ly/Apkantigo" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('GABRIMX7', this)">
+        <i class="fas fa-copy"></i> NÃO POSSUI SENHA
+      </button>
+   </div>
+ </div>
+</div>
+
+</a>
+  </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/Jnx7MVaroiI" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v24</h3>
+      </div>
+      <div class="file-size">Peso <strong>312 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/antlag24" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('NÃO TEM SENHA', this)">
+        <i class="fas fa-copy"></i> NÃO TEM SENHA 
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/QvvSwn8uxa8" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v23</h3>
+      </div>
+      <div class="file-size">Peso <strong>343 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/antlag23" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('NÃO TEM SENHA', this)">
+        <i class="fas fa-copy"></i> NÃO TEM SENHA 
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/_R6jN4XcohE" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v22</h3>
+      </div>
+      <div class="file-size">Peso <strong>484 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/antlag22" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('antlag22', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/8mbDjZU6KRo" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v21</h3>
+      </div>
+      <div class="file-size">Peso <strong>746 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/antlag21" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('antlag21', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/j7cMJdy_LgA" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v20</h3>
+      </div>
+      <div class="file-size">Peso <strong>540 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/antileg-20" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('20antileg', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/DVTV1fKYMRU" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v19</h3>
+      </div>
+      <div class="file-size">Peso <strong>391 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/antilagv19" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#anti lag v19', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/ZNaCp5F0SRI" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v18</h3>
+      </div>
+      <div class="file-size">Peso <strong>391 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/anti-lag" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('anti-lag', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/kpVXMzV-lTo" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v17</h3>
+      </div>
+      <div class="file-size">Peso <strong>387 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.digital/datsp" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('anti-lag', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/MAsh2CNqcYA" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v16</h3>
+      </div>
+      <div class="file-size">Peso <strong>394 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.digital/datsb" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('anti-lag', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/Nde9QhQziHM" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v15</h3>
+      </div>
+      <div class="file-size">Peso <strong>386 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.net/brps" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#anti-lag', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/tcMKPwzJ84A" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v14</h3>
+      </div>
+      <div class="file-size">Peso <strong>522 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/cxs" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#antilag', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/rRN0nzK52uw" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v13</h3>
+      </div>
+      <div class="file-size">Peso <strong>517 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/psb" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#antilag', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/vmcYc6-DoiE" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v12</h3>
+      </div>
+      <div class="file-size">Peso <strong>550 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/sct" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#antlag', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/-iitCducpXM" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v11</h3>
+      </div>
+      <div class="file-size">Peso <strong>362 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/dpba" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#500', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/lHvIEkU0qEU" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v10</h3>
+      </div>
+      <div class="file-size">Peso <strong>503 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/vbfm" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#NATAL', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/5cCFWGL6nXQ" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v9</h3>
+      </div>
+      <div class="file-size">Peso <strong>?? mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/gifh" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#300', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/4kW21Lruc4s" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v8</h3>
+      </div>
+      <div class="file-size">Peso <strong>304 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/gipp" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#200', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/PE6Xm_E5Brk" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v7</h3>
+      </div>
+      <div class="file-size">Peso <strong>330 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/ffgi" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#100', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/GDi2gF3AqcQ" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v6</h3>
+      </div>
+      <div class="file-size">Peso <strong>483 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/pdvi" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#GabriMX7', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/Nc_SWjyqZBc" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v5</h3>
+      </div>
+      <div class="file-size">Peso <strong>356 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/Rjpa" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#GabriMX7', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/sQNwPK0mpqI" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v4</h3>
+      </div>
+      <div class="file-size">Peso <strong>346 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/bajs" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#LIKE', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/iqoIm5lxwLQ" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v3</h3>
+      </div>
+      <div class="file-size">Peso <strong>444 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/jkpf" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#GabriMX7', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+</a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/sQNwPK0mpqI" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v4</h3>
+      </div>
+      <div class="file-size">Peso <strong>346 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://4br.me/bajs" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#LIKE', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/ke9SXkLSebI" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v2</h3>
+      </div>
+      <div class="file-size">Peso <strong>301 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/890ngoEG" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('GabriXz7', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  </a>
+ </div>
+
+  <div class="download-card-custom">
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/tEe5JvUQeUM" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="download-content-v2">
+    <div class="download-header">
+      <div>
+         <span class="category-badge">DATA ANDROID</span>
+         <h3>Data Anti-lag v1</h3>
+      </div>
+      <div class="file-size">Peso <strong>355 mb</strong></div>
+    </div>
+    
+    <p class="download-desc">❤️ Se Escreve No Canal Para Ajudar ❤️ </p>
+    
+    <div class="button-group">
+      <a href="https://seulink.online/qVp0JR" class="btn-download-new" target="_blank">
+        <i class="fas fa-download"></i> BAIXAR
+      </a>
+      
+      <button class="btn-download-new btn-senha" onclick="copyPassword('#BielXxz7', this)">
+        <i class="fas fa-copy"></i> Password
+      </button>
+   </div>
+ </div>
+</div>
+
+  
+  <script>
+    const menuBtn = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    // Mapeamento das Telas
+    const screens = {
+        home: document.getElementById('home-screen'),
+        download: document.getElementById('download-screen'),
+        cit: document.getElementById('cit-screen')
+    };
+
+    // Função para alternar o Menu Lateral
+    function toggleMenu() {
+        menuBtn.classList.toggle('open');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    // Função para esconder todas as telas antes de mostrar uma nova
+    function hideAllScreens() {
+        Object.values(screens).forEach(screen => {
+            if (screen) screen.style.display = 'none';
+        });
+    }
+
+    // Navegação para Downloads
+    function showDownloads() {
+        hideAllScreens();
+        screens.download.style.display = 'block';
+        if(sidebar.classList.contains('active')) toggleMenu();
+        window.scrollTo(0,0);
+    }
+
+    // Navegação para Cit (Nova Tela)
+    function showCit() {
+        hideAllScreens();
+        screens.cit.style.display = 'block';
+        if(sidebar.classList.contains('active')) toggleMenu();
+        window.scrollTo(0,0);
+    }
+  
+    // Navegação para Home
+    function showHome() {
+        hideAllScreens();
+        screens.home.style.display = 'block';
+        if(sidebar.classList.contains('active')) toggleMenu();
+        window.scrollTo(0,0);
+    }
+
+    // Função para Copiar Texto (Senhas ou Comandos)
+    function copyPassword(text, btn) {
+        navigator.clipboard.writeText(text).then(() => {
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> COPIADO!';
+            btn.style.borderColor = '#1a1a1a';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.borderColor = '#333';
+            }, 2000);
+        });
+    }
+
+    // Eventos de clique
+    menuBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+    
+    function closeWelcome() {
+    const screen = document.getElementById('welcome-screen');
+    screen.style.opacity = '0';
+    screen.style.transition = '0.5s ease';
+    setTimeout(() => {
+        screen.style.display = 'none';
+    }, 500);
+}
+
+</script>
+</body>
+</html>
