@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Downloads</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .tag {
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Download Search</h1>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for downloads...">
+        <button onclick="searchDownloads()">Search</button>
+    </div>
+    <div id="resultContainer" class="result"></div>
+
+    <script>
+        const downloads = [
+            { name: "File A", tags: ["music", "zip"]},
+            { name: "File B", tags: ["video", "mp4"]},
+            { name: "File C", tags: ["image", "jpg"]},
+            { name: "File D", tags: ["music", "mp3"]},
+            { name: "File E", tags: ["document", "pdf"]}
+        ];
+
+        function searchDownloads() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const results = downloads.filter(file => file.name.toLowerCase().includes(query) || file.tags.some(tag => tag.toLowerCase().includes(query)));
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = '';
+            if (results.length > 0) {
+                results.forEach(file => {
+                    const fileDiv = document.createElement('div');
+                    fileDiv.innerHTML = `<strong>${file.name}</strong> - Tags: ${file.tags.map(tag => `<span class='tag'>${tag}</span>`).join('')}`;
+                    resultContainer.appendChild(fileDiv);
+                });
+            } else {
+                resultContainer.innerHTML = '<p>No results found.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
