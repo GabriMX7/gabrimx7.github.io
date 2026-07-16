@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GabriMx7 • Oficina beta</title>
+    
+    <!-- icone do Navegador (Emoji 🌐) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 font-size=%2270%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>🌐</text></svg>">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root{--bg:#000;--white:#fff;--muted:#737373;--border:rgba(255,255,255,0.1);--accent:#fff;--discord:#5865F2;--youtube:#f00;--gold:#FFD700;--sys-bg:rgba(10,10,10,0.8);--sys-border:rgba(255,255,255,0.15);--sys-glow:rgba(255,255,255,0.4)}
+        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);margin:0;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:.8rem}
+        #sparkles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+        #progress-bar{position:fixed;top:0;left:0;width:0;height:2px;background:var(--white);z-index:2001;transition:width .1s}
+        .header-wrapper{position:fixed;top:0;width:100%;z-index:1000;background:rgba(0,0,0,0.7);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,0.05)}
+        .nav-container{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;max-width:1100px;margin:0 auto}
+        .nav-brand{display:flex;align-items:center;gap:8px}
+        .nav-logo{width:30px;height:30px;border:2px solid var(--white);border-radius:8px;display:flex;align-items:center;justify-content:center}
+        .nav-logo i{font-size:1rem}
+        .nav-title-group{display:flex;flex-direction:column;line-height:1.1}
+        .nav-main-title{font-weight:800;font-size:.8rem}
+        .nav-sub-title{font-weight:600;font-size:.5rem;opacity:.6;letter-spacing:.5px}
+        .menu-box{width:32px;height:32px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s}
+        .menu-box:hover{background:var(--white);color:#000}
+        .sidebar{position:fixed;top:0;right:-100%;width:100%;height:100%;background:rgba(0,0,0,0.98);backdrop-filter:blur(25px);z-index:2000;transition:.5s cubic-bezier(0.77,0,0.175,1);padding:20px;box-sizing:border-box;display:flex;flex-direction:column}
+        .sidebar.active{right:0}
+        .sidebar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+        .close-btn{width:35px;height:35px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+        .sidebar-links{display:flex;flex-direction:column;gap:8px}
+        .sidebar-item{display:flex;align-items:center;gap:12px;padding:12px 18px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;color:var(--white);text-decoration:none;font-weight:600;font-size:.8rem;transition:.3s}
+        .sidebar-item:hover{background:rgba(255,255,255,0.07);border-color:var(--white);transform:scale(1.02)}
+        .sidebar-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1999;display:none}
+        .sidebar-overlay.active{display:block}
+        .system-area{background:transparent;padding:20px 0;margin-bottom:3.5rem}
+        .status-wrapper{display:flex;justify-content:center;max-width:1100px;margin:0 auto}
+        .status-container{display:inline-flex;align-items:center;background:var(--sys-bg);border:1px solid var(--sys-border);border-radius:50px;padding:6px 6px 6px 18px;gap:12px;backdrop-filter:blur(12px);position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.5);animation:borderGlow 4s infinite alternate}
+        @keyframes borderGlow{from{border-color:rgba(255,255,255,.1)}to{border-color:var(--sys-glow);box-shadow:0 0 15px rgba(255,255,255,0.2)}}
+        .status-container::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);animation:scan 3s infinite}
+        @keyframes scan{0%{left:-100%}100%{left:150%}}
+        .status-online{display:flex;align-items:center;gap:8px;color:#10b981;font-weight:700;font-size:.7rem;text-transform:uppercase}
+        .status-dot{width:8px;height:8px;background-color:#10b981;border-radius:50%;box-shadow:0 0 10px #10b981;animation:pulse-green 2s infinite}
+        @keyframes pulse-green{0%{transform:scale(.95);box-shadow:0 0 0 0 rgba(16,185,129,.7)}70%{transform:scale(1);box-shadow:0 0 0 6px rgba(16,185,129,0)}100%{transform:scale(.95);box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+        .status-divider{color:rgba(255,255,255,0.1);font-weight:200}
+        .status-version{color:#94a3b8;font-size:.7rem;font-weight:600;font-family:monospace}
+        .changelog-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:6px 14px;border-radius:50px;color:#fff;font-size:.7rem;font-weight:700;text-decoration:none;position:relative;cursor:pointer;transition:.3s;z-index:2}
+        .changelog-pill:hover{background:#fff;color:#000}
+        .container{max-width:1100px;margin:0 auto;padding:6rem 1.5rem 4rem;position:relative;z-index:1}
+        .hero{margin-bottom:3.5rem}
+        .hero-title-box{display:flex;align-items:center;gap:15px;margin-bottom:.6rem}
+        .hero-logo-box{width:42px;height:42px;border:2px solid var(--white);border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.03)}
+        .hero-logo-box i{font-size:1.5rem}
+        .hero h1{font-size:clamp(1.5rem,5vw,2.2rem);font-weight:800;margin:0;letter-spacing:-.03em}
+        .hero p{color:var(--muted);font-size:.78rem;line-height:1.5;max-width:500px;margin:0}
+        .hero-btns{display:flex;gap:8px;margin-top:20px;overflow-x:auto;padding-bottom:5px}
+        .btn{display:inline-flex;align-items:center;gap:.5rem;padding:8px 16px;border-radius:12px;font-weight:700;text-decoration:none;transition:.3s;font-size:.75rem;cursor:pointer;white-space:nowrap;box-sizing:border-box}
+        .btn-main{background:transparent;color:var(--white);border:1px solid var(--white)}
+        .btn-main:hover{background:var(--white);color:#000}
+        .btn-action{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--white);justify-content:center}
+        .btn-action:hover{background:var(--white);color:#000}
+        .btn-full{width:100%!important;margin-top:8px}
+        .btn-copy-pass{background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.3);color:#fff;font-family:'Inter',sans-serif;font-size:.75rem;transition:.3s}
+        .copy-success{background:var(--white)!important;color:#000!important;border-style:solid!important;border-color:var(--white)!important}
+        section{margin-bottom:3.5rem;scroll-margin-top:100px}
+        h2{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);display:flex;align-items:center;gap:.5rem;margin-bottom:1.2rem}
+        .files-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+        .file-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:18px;padding:1.2rem;transition:.3s;text-align:center;display:flex;flex-direction:column;align-items:center;overflow:hidden;position:relative}
+        .file-card:hover{border-color:rgba(255,255,255,0.5)}
+        .badge-new{position:absolute;top:10px;left:10px;background:var(--white);color:#000;padding:3px 6px;border-radius:5px;font-size:.5rem;font-weight:900;display:flex;align-items:center;gap:3px;z-index:10;box-shadow:0 4px 10px rgba(0,0,0,.3)}
+        .badge-zip{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.1);backdrop-filter:blur(5px);border:1px solid var(--border);color:var(--white);padding:3px 6px;border-radius:5px;font-size:.5rem;font-weight:800;z-index:10}
+        .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;box-sizing:border-box}
+        .modal-overlay.active{display:flex;animation:fadeIn .3s ease}
+        .modal-content{background:#0a0a0a;border:1px solid var(--border);width:100%;max-width:380px;border-radius:20px;padding:20px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+        .modal-close{position:absolute;top:15px;right:15px;background:rgba(255,255,255,.05);border:1px solid var(--border);width:30px;height:30px;border-radius:8px;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+        .update-list{list-style:none;padding:0;margin:15px 0 0;text-align:left}
+        .update-item{padding:12px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+        .update-item:last-child{border:none}
+        .update-date{font-size:.6rem;color:var(--muted);font-weight:600}
+        .update-text{font-size:.75rem;color:var(--white);line-height:1.4}
+        @keyframes fadeIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+        .preview{width:calc(100% + 2.4rem);height:160px;background:#000;margin:-1.2rem -1.2rem 1rem;border-bottom:1px solid var(--border);overflow:hidden;border-radius:18px 18px 0 0;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative}
+        .preview img{width:100%;height:100%;object-fit:cover;opacity:.7;transition:.5s ease}
+        .file-card:hover .preview img{opacity:1;transform:scale(1.05)}
+        .preview-icon{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%)}
+        .preview-icon i{font-size:3.5rem;color:#fff;filter:drop-shadow(0 0 15px rgba(255,255,255,0.4));animation:pulse 2s infinite}
+        .file-card h3{font-size:.9rem;margin:0;font-weight:800}
+        .file-desc{font-size:.75rem;color:var(--muted);margin:6px 0 12px;line-height:1.4}
+        .btn-dl{width:100%;background:transparent;color:var(--white);border:1px solid var(--white);text-decoration:none;padding:10px;border-radius:12px;font-weight:800;transition:.3s;font-size:.8rem;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+        .btn-dl:hover{background:var(--white);color:#000}
+        .social-icon-box{font-size:2rem;margin-bottom:.8rem}
+        .discord-color{color:var(--discord)}
+        .youtube-color{color:var(--youtube)}
+        footer{padding:3rem 0;text-align:center;border-top:1px solid var(--border);opacity:.4;font-size:.6rem;letter-spacing:1px}
+    </style>
+</head>
+
+<style>
+    /* Bloqueia seleção de texto e toque longo no celular */
+    * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-drag: none;
+    }
+</style>
+
+<script>
+    // Bloqueia clique direito e teclas de inspeção
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123 || 
+            (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || 
+            (e.ctrlKey && e.keyCode == 85)) {
+            return false;
+        }
+    };
+
+    // Anti-Debugger: Se alguém abrir o console, o site "trava" propositalmente
+    setInterval(function() {
+        (function() {
+            (function a() {
+                try {
+                    (function b(i) {
+                        if (('' + (i / i)).length !== 1 || i % 20 === 0) {
+                            (function() {}).constructor('debugger')();
+                        } else {
+                            debugger;
+                        }
+                        b(++i);
+                    })(0);
+                } catch (e) {
+                    setTimeout(a, 5000);
+                }
+            })();
+        })();
+    }, 1000);
+</script>
+
+<body>
+    <div id="progress-bar"></div>
+    <canvas id="sparkles"></canvas>
+    <div class="header-wrapper">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <div class="nav-logo"><i class="ph-fill ph-cube"></i></div>
+                <div class="nav-title-group">
+                    <span class="nav-main-title">GabriMx7</span>
+                    <span class="nav-sub-title">SA-MP MOBILE</span>
+                </div>
+            </div>
+            <div class="menu-box" onclick="toggleMenu()"><i class="ph ph-list"></i></div>
+        </nav>
+    </div>
+    <div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="nav-brand">
+                <div class="nav-logo"><i class="ph-fill ph-navigation-arrow"></i></div>
+                <div class="nav-title-group">
+                    <span class="nav-main-title">GabriMx7</span>
+                    <span class="nav-sub-title">SA-MP MOBILE</span>
+                </div>
+            </div>
+            <div class="close-btn" onclick="toggleMenu()"><i class="ph ph-x"></i></div>
+        </div>
+        <div class="sidebar-links">
+            <a href="#" class="sidebar-item" onclick="toggleMenu()"><i class="ph ph-house"></i> Home</a>
+            <a href="#updates" class="sidebar-item" onclick="toggleMenu(); openModal();"><i class="ph ph-megaphone"></i> Atualizacoes</a>
+            <a href="#social" class="sidebar-item" onclick="toggleMenu()"><i class="ph ph-share-network"></i> Suporte & Social</a>
+            <a href="#materiais" class="sidebar-item" onclick="toggleMenu()"><i class="ph ph-download-simple"></i> Downloads</a>
+            <a href="#creditos" class="sidebar-item" onclick="toggleMenu(); openCredits();"><i class="ph ph-star"></i> Creditos</a>
+        </div>
+    </nav>
+    <main class="container">
+        <header class="hero" data-aos="fade-up">
+            <div class="hero-title-box">
+                <div class="hero-logo-box"><i class="ph-fill ph-cube"></i></div>
+                <h1>  GabriMx7</h1>
+            </div>
+            <p>Repositorio oficial de arquivos e codigos otimizados para o Samp Mobile.</p>
+            <div class="hero-btns">
+                <a href="https://discord.gg/cHDTJGXrvJ" class="btn btn-main"><i class="ph ph-users"></i> Comunidade</a>
+                <a href="#materiais" class="btn btn-action"><i class="ph ph-download-simple"></i> Downloads</a>
+            </div>
+        </header>
+        <section id="social">
+            <h2><i class="ph ph-share-network"></i> Suporte & Social</h2>
+            <div class="files-grid">
+                <div class="file-card" data-aos="fade-up">
+                    <div class="social-icon-box discord-color"><i class="fab fa-discord"></i></div>
+                    <h3>Discord</h3>
+                    <p class="file-desc">Comunidade ativa para suporte.</p>
+                    <a href="https://discord.gg/cHDTJGXrvJ" target="_blank" class="btn btn-action btn-full">Entrar agora</a>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="social-icon-box youtube-color"><i class="fab fa-youtube"></i></div>
+                    <h3>YouTube</h3>
+                    <p class="file-desc">Tutoriais praticos de implementacao.</p>
+                    <a href="https://youtube.com/@gabrimx7?si=zKRQS_eXeu5VGDrS" target="_blank" class="btn btn-action btn-full">Acessar Canal</a>
+                </div>
+            </div>
+        </section>
+        <div class="system-area">
+            <div class="status-wrapper" data-aos="fade-up">
+                <div class="status-container">
+                    <div class="status-online"><span class="status-dot"></span>Updates</div>
+                    <span class="status-divider"> • </span>
+                    <span class="status-version">v1.0</span>
+                    <div class="changelog-pill" onclick="openModal()"><i class="ph-fill ph-lightning"></i>logs</div>
+                </div>
+            </div>
+        </div>
+        <section id="materiais">
+            <h2><i class="ph ph-folder-open"></i> Meus Arquivos</h2>
+            <div class="files-grid">
+                <div class="file-card" data-aos="fade-up">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview" onclick="window.open('https://youtu.be/WXtNOC-jO-k', '_blank')"><img src="https://img.youtube.com/vi/WXtNOC-jO-k/maxresdefault.jpg" alt="Video"></div>
+                    <h3>APK Launcher</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Launcher base otimizado para sistemas Android.</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://bit.ly/Apkantigo" target="_blank" class="btn-dl">Download APK</a>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/Jnx7MVaroiI', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v24 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/antlag24" target="_blank" class="btn-dl">Download ZIP</a>
+                   </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/QvvSwn8uxa8', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v23 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/antlag23" target="_blank" class="btn-dl">Download ZIP</a>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/_R6jN4XcohE', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v22 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/antlag22" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('antlag22', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/8mbDjZU6KRo', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v21 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/antlag21" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('antlag21', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/j7cMJdy_LgA', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v20 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://4br.me/antileg-20" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('20antileg', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/DVTV1fKYMRU', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v19 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://4br.me/antilagv19" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#anti lag v19', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/ZNaCp5F0SRI', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v18 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://4br.me/anti-lag" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('anti-lag', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/kpVXMzV-lTo', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                   <h3>Gta Ant Lag v17 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://Seulink.digital/datsp" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('anti-lag', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/MAsh2CNqcYA', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v16 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://Seulink.digital/datsb" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('anti-lag', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/Nde9QhQziHM', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v15 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.net/brps" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#antlag', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/tcMKPwzJ84A', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v14 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/cxs" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#antilag', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/rRN0nzK52uw', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v13 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/psb" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#antlag', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/vmcYc6-DoiE', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v12 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/sct" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#antlag', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/-iitCducpXM', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v11 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/dpba" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#500', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/lHvIEkU0qEU', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v10 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/vbfm" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#NATAL', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                  <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/5cCFWGL6nXQ', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v9 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/gifh" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#300', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                 <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/4kW21Lruc4s', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v8 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/gipp" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#200', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/PE6Xm_E5Brk', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v7 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/ffgi" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#100', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/GDi2gF3AqcQ', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v6 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/pdvi" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#GabriMX7', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/Nc_SWjyqZBc', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v5 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/Rjpa" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#GabriMX7', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/sQNwPK0mpqI', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                   <h3>Gta Ant Lag v4 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://4br.me/bajs" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#LIKE', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/iqoIm5lxwLQ', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                   <h3>Gta Ant Lag v3 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/jkpf" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#GabriMX7', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/ke9SXkLSebI', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v2 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/890ngoEG" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('GabriXz7', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+                <div class="file-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge-new"><i class="ph-fill ph-hammer"></i> NOVO</div>
+                    <div class="badge-zip">.ZIP</div>
+                    <div class="preview preview-icon" onclick="window.open('https://youtu.be/tEe5JvUQeUM', '_blank')"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>Gta Ant Lag v1 Para Mobile</h3>
+                    <p class="file-desc"> </p>
+                    <p class="file-desc">Caso Poste A Data Deixa Os Creditos</p>
+                    <p class="file-desc"> </p>
+                    <a href="https://seulink.online/qVp0JR" target="_blank" class="btn-dl">Download ZIP</a>
+                    <button onclick="copyPassword('#BielXxz7', this)" class="btn btn-action btn-full btn-copy-pass"><i class="ph ph-key"></i>Password</button>
+                </div>
+            </div>
+        </section>
+        <div class="modal-overlay" id="modalUpdates" onclick="closeModal(event)">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-close" onclick="closeModal(null)"><i class="ph ph-x"></i></div>
+                <h3 style="margin: 0; font-size: 1.1rem;"><i class="ph ph-clock-counter-clockwise"></i> Historico</h3>
+                <p style="color: var(--muted); font-size: 0.7rem; margin-top: 5px;">Acompanhe o que mudou no site.</p>
+                <div class="update-list">
+                    <div class="update-item">
+                        <span class="update-date">segunda-feira, 13 de julho de 2026</span>
+                        <span class="update-text"><b>v1.0:</b>  Lancamento oficial do novo layout do site e sistema de arquivos.</span>
+                    </div>
+                </div>
+                <button class="btn btn-action btn-full" style="margin-top: 15px;" onclick="closeModal(null)">Fechar</button>
+            </div>
+        </div>
+        <div class="modal-overlay" id="modalCredits" onclick="closeCredits(event)">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-close" onclick="closeCredits(null)"><i class="ph ph-x"></i></div>
+                <h3 style="margin: 0; font-size: 1.1rem;"><i class="ph ph-star"></i> Creditos</h3>
+                <p style="color: var(--muted); font-size: 0.7rem; margin-top: 5px;"> Reconhecimento e colaborações do projeto.</p>
+                <div class="update-list">
+                    <div class="update-item">
+                        <span class="update-date">DESENVOLVIMENTO AI</span>
+                        <span class="update-text">Este projeto contou com a assistencia tecnica da <b>Gemini AI</b> para otimizacao de codigo.</span>
+                    </div>
+                    <div class="update-item">
+                        <span class="update-date">PROPRIETARIO</span>
+                        <span class="update-text"><b>GabriMx7</b> - Idealizacao e curadoria de conteudo.</span>
+                    </div>
+                </div>
+                <button class="btn btn-action btn-full" style="margin-top: 15px;" onclick="closeCredits(null)">Fechar</button>
+            </div>
+        </div>
+    </main>
+    <footer>&copy; 2026 GabriMx7 - Desenvolvido Para A Comunidade Mobile</footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({duration:600,once:!0});
+        function openModal(){document.getElementById('modalUpdates').classList.add('active');document.body.style.overflow='hidden'}
+        function closeModal(){document.getElementById('modalUpdates').classList.remove('active');document.body.style.overflow='auto'}
+        function openCredits(){document.getElementById('modalCredits').classList.add('active');document.body.style.overflow='hidden'}
+        function closeCredits(){document.getElementById('modalCredits').classList.remove('active');document.body.style.overflow='auto'}
+        function copyPassword(t,e){const n=()=>{const t=e.innerHTML;e.innerHTML='<i class="ph ph-check-circle"></i> Copiado!',e.classList.add('copy-success'),setTimeout(()=>{e.innerHTML=t,e.classList.remove('copy-success')},2e3)};navigator.clipboard&&window.isSecureContext?navigator.clipboard.writeText(t).then(n).catch(()=>fallbackCopy(t,e)):fallbackCopy(t,e)}
+        function fallbackCopy(t,e){const n=document.createElement("textarea");n.value=t,document.body.appendChild(n),n.select(),document.execCommand('copy'),document.body.removeChild(n)}
+        function toggleMenu(){document.getElementById('sidebar').classList.toggle('active'),document.getElementById('overlay').classList.toggle('active')}
+        window.onscroll=function(){let t=document.body.scrollTop||document.documentElement.scrollTop,e=document.documentElement.scrollHeight-document.documentElement.clientHeight;document.getElementById("progress-bar").style.width=(t/e)*100+"%"};
+        const canvas=document.getElementById('sparkles'),ctx=canvas.getContext('2d');let particles=[];
+        function resize(){canvas.width=window.innerWidth,canvas.height=window.innerHeight}
+        window.addEventListener('resize',resize),resize();
+        class Particle{constructor(){this.init()}init(){this.x=Math.random()*canvas.width,this.y=Math.random()*canvas.height,this.size=Math.random()*1.5+.5,this.speed=Math.random()*.8+.2,this.opacity=Math.random()*.5+.1}update(){this.y+=this.speed,this.y>canvas.height&&(this.y=-10)}draw(){ctx.fillStyle=`rgba(255,255,255,${this.opacity})`,ctx.beginPath(),ctx.arc(this.x,this.y,this.size,0,2*Math.PI),ctx.fill()}}
+        for(let i=0;i<70;i++)particles.push(new Particle());
+        function animate(){ctx.clearRect(0,0,canvas.width,canvas.height),particles.forEach(p=>{p.update(),p.draw()}),requestAnimationFrame(animate)}animate();
+    </script>
+</body>
+</html>
